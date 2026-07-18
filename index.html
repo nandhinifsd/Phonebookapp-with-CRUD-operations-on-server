@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Phonebook App</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="phonebook">
+      
+    <div class="display" id="Display">
+        <div class="keypad-window section" id="keypad-section">
+        <div class="keypad-header">
+        <button class="add-btn" id="add-contact-keypad" onclick="addcontact('keypad')"><img src="icons/add.png" height="30px" width="30px"></button></div>
+        <div class="input-container">
+        <div class="input">
+        <input type="tel" pattern="[0-9]{10}" class="phoneinput" id="phoneno" maxlength="10">
+        
+        <button class="backspace" id="backspace-btn"><img src="icons/backspace.png" width="50px" height="30px"></button></div>
+        <ul class="keypad-suggestions"></ul></div>
+        <div class="keypad-area">
+        <button class="keypad-btn" value="1"><h1>1</h1><p>ABC</p></button>
+        <button class="keypad-btn" value="2"><h1>2</h1><p>DEF</p></button>
+        <button class="keypad-btn" value="3"><h1>3</h1><p>GHI</p></button>
+        <button class="keypad-btn" value="4"><h1>4</h1><p>JKL</p></button>
+         <button class="keypad-btn" value="5"><h1>5</h1><p>MNO</p></button>
+        <button class="keypad-btn" value="6"><h1>6</h1><p>PQR</p></button>
+        <button class="keypad-btn" value="7"><h1>7</h1><p>STU</p></button>
+        <button class="keypad-btn" value="8"><h1>8</h1><p>VWX</p></button>
+        <button class="keypad-btn" value="9"><h1>9</h1><p>YZ</p></button>
+        <button class="keypad-btn" value="*"><h1>*</h1></button>
+         <button class="keypad-btn" value="0"><h1>0</h1><p>+</p></button>
+        <button class="keypad-btn" value="#"><h1>#</h1></button></div>
+        <div class="call-button-area"><button class="call-btn" onclick="calling('keypad')"><img src="icons/call.png" width="50px" height="50px"></button>
+           </div>
+        </div>
+        <div class="Contacts section" id="contact-section">
+            <div class="contacts-header">
+            <h1>My Phonebook</h1>
+            <button class="add-btn" id="add-contact-phonebook" onclick="addcontact('phonebook')"><img src="icons/add.png" height="50px" width="50px"></button>
+            </div>
+            <div class="search-container">
+            <input type="search" placeholder="Search contacts..." id="search">
+            <ul class="suggestions"></ul></div>
+            <div class="phonebookdisplay" id="displaycontacts">
+                <ul class="contactslist"></ul>
+            </div>
+        </div>
+      <!--  <div class="logs section" id="logs-section"></div>-->
+        <div class="favourites section" id="favourites-section">
+             
+            <div class="favourites-header">
+            <h1>My Favourites</h1>
+            <button class="add-btn" id="add-contact-favourites" onclick="addcontact('favourites')"><img src="icons/add.png" height="50px" width="50px"></button>
+            </div>
+            <div class="fav-search-container">
+            <input type="search" placeholder="Search contacts..." id="fav-search" >
+            <ul class="fav-suggestions"></ul></div>
+            <div class="phonebookdisplay" id="display-fav-contacts">
+                <ul class="fav-contactslist"></ul>
+            </div>
+        
+        </div>
+    </div>
+    
+  
+    <div class="operations">
+        <button value="Keypad" class="operation-btn"><img src="icons/keypad.png" alt="keypad" height="50px" width="50px"><p>Keypad</p></button>
+        <button value="Phonebook" class="operation-btn"><img src="icons/phonebook.png" alt="phonebook" height="50px" width="50px"><p>Phonebook</p></button>
+      <!--<button value="Logs" class="operation-btn"><img src="icons/telephone-call.png" alt="Logs" height="50px" width="50px"><p>Logs</p></button>--> 
+        <button value="Favourites" class="operation-btn"><img src="icons/heart.png" alt="Favourites" height="50px" width="50px"><p>Favourites</p></button>
+    </div>
+    <div class="contact-card">
+            <button class="close-btn"><img src="icons/close.png" height="50px" width="50px"></button>
+            <div class="contact-img"><h1 class="initial"></h1></div>
+            <h1 class="contactcardname"></h1>
+            <h3 class="hidden"></h3>
+            <h3 class="phonenum"></h3>
+            <h3 class="emailid"></h3>
+            <div class="btns"><button class="edit-btn"><img src=icons/pen.png height="50px" width="50px"></button>
+            <button class="delete-btn"><img src=icons/delete.png height="50px" width="50px"></button>
+        <button class="calling-btn" onclick="calling('card')"><img src=icons/telephone.png height="50px" width="50px"></button></div>
+        </div>
+          <div class="calling-card">
+            <h1>Calling..</h1>
+            <h1 class="callingcardname"></h1>
+         <button class="close-btn end-btn"><img src="icons/circle.png" height="70px" width="70px"></button>
+        </div>
+        <div class="addcontact-form">
+            <div class="form-btns">
+                <button class="close-form" id="closeform"><img src="icons/close.png" height="50px" width="50px"></button>
+                <button class="close-form" id="updateDB"><img src="icons/check.png" height="50px" width="50px"></button>
+            </div>
+            <div class="imgcontainer">
+                <img id="profile-img" alt="ProfileImage">
+                    <label for="contactImage" id="photo-label">Add Photo</label>
+                <input type="file" id="contactImage" accept="image/*" hidden>
+            </div>
+            <div class="textbox-area">
+            <input type="hidden" id="contact-id" class="textbox" >
+            <input type="text" id="Firstname" class="textbox" placeholder="Enter First Name" required>
+            <input type="text" id="Lastname" class="textbox" placeholder="Enter Last Name">
+            <input type="tel" id="Phonenumber" class="textbox" placeholder="Enter Phone Number" required>
+            <input type="email" id="Emailid" class="textbox" placeholder="Enter Email Id">
+            <label><input type="checkbox" id="favourite-contact">Add to favorites</label></div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
