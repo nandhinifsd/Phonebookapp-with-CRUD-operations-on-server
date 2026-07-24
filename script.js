@@ -206,13 +206,13 @@ async function updateData()
  
  else
   favourite="false";
-img="";
+let img="";
 if(image_flag==true)
 {
-  let img=document.getElementById("profile-img").src;
+   img=document.getElementById("profile-img").src;
+  console.log(img);
 }
 
- 
  console.log(favourite);
 console.log(img);
  newcontact={firstname,lastname,phone,email,img,favourite};
