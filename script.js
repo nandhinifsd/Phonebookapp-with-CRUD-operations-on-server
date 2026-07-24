@@ -14,7 +14,7 @@ let form=document.querySelector(".addcontact-form");
 let current_source;
 let contacts=[];
 let newcontact=[];
-let img="";
+//let img="";
 let image_flag=false;
 const url=`https://phonebookapp-api.onrender.com/contacts`;
  initialiseEvents();
@@ -112,18 +112,22 @@ if (current_source=="card")
 //
 
 //event listener for uploading img into webpage and display it in preview and save it in db
-img="";
+
 imageinput=document.getElementById("contactImage");
 photo=document.getElementById("profile-img")
 imageinput.addEventListener("change",function()
 { 
         const file = this.files[0];
         if (!file) 
+        {
+          image_flag=false;
           return;
+          }
         const reader = new FileReader();
     reader.onload = function () {
-        img = reader.result;
+      let img = reader.result;
       photo.src=img;
+      image_flag=true;
     };
 
     reader.readAsDataURL(file);
@@ -194,11 +198,18 @@ async function updateData()
  let phone=document.getElementById("Phonenumber").value;
  let email=document.getElementById("Emailid").value;
  let fav=document.getElementById("favourite-contact").checked;
+ 
  if (fav==true)
   favourite="true";
  
  else
   favourite="false";
+img="";
+if(image_flag==true)
+{
+  let img=document.getElementById("profile-img").src;
+}
+
  
  console.log(favourite);
 console.log(img);
