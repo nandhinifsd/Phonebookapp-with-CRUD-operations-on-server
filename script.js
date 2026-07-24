@@ -15,6 +15,7 @@ let current_source;
 let contacts=[];
 let newcontact=[];
 let img="";
+let image_flag=false;
 const url=`https://phonebookapp-api.onrender.com/contacts`;
  initialiseEvents();
 
@@ -144,9 +145,17 @@ imageinput.addEventListener("change",function()
       let phoneno=document.querySelector(".phonenum");
         let emailid=document.querySelector(".emailid");
         let idlabel=document.querySelector(".hidden");
-        let img=document.querySelector(".profile-image");
-        console.log(initial.innerText,contactname.innerText,phoneno.innerText,emailid.innerText,idlabel.innerText,img);
-        editData(initial.innerText,contactname.innerText,phoneno.innerText,emailid.innerText,idlabel.innerText,img);
+        let propic="";
+        if(image_flag==true)
+        {
+          let cardimg=document.querySelector(".profile-image");
+          console.log(document.querySelector(".profile-image"));
+          console.log(propic);
+           propic=cardimg.src;
+        }
+               
+        console.log(initial.innerText,contactname.innerText,phoneno.innerText,emailid.innerText,idlabel.innerText,propic);
+        editData(initial.innerText,contactname.innerText,phoneno.innerText,emailid.innerText,idlabel.innerText,propic);
   });
   //eventlistener for delete button on the card
   let delbtn=document.querySelector(".delete-btn");
@@ -243,7 +252,8 @@ async function editData(initial,firstname,phone,email,id,img)
   document.getElementById("Emailid").value=email;
   document.getElementById("contact-id").value=id;
   if(img)
-  document.getElementById("profile-img").src=img.src;
+  document.getElementById("profile-img").src=img;
+
 
    checkbox=document.getElementById("favourite-contact");
   await refreshContacts();
@@ -315,7 +325,7 @@ function displayphonebook()
 
 }
  
-function displaycontactcard(name,phone,email,img,id,source)
+function displaycontactcard(name,phone,email,contactimg,id,source)
 {
   
   let initial=document.querySelector(".initial");
@@ -326,17 +336,19 @@ function displaycontactcard(name,phone,email,img,id,source)
         
         current_source=source;
         card.style.display="flex";
-        if(img)
+            initial.innerHTML="";
+        if(contactimg)
         {
           let image=document.createElement("img");
           image.classList.add("profile-image");
-          image.src=img;
-          
+          image.src=contactimg;
+          image_flag=true;
           initial.appendChild(image);
         }
         else
         {
            initial.innerHTML=name[0];
+           image_flag=false;
         }
        
         contactname.innerHTML=name;
@@ -352,7 +364,8 @@ function closecard(){
   
   showsection(current_source);
 }
-function closeform(){
+function closeform()
+{
   document.getElementById("Firstname").value="";
   document.getElementById("Lastname").value="";
   document.getElementById("Phonenumber").value="";
@@ -360,9 +373,9 @@ function closeform(){
   document.getElementById("contact-id").value="";
   document.getElementById("favourite-contact").checked=false;
   let photo=document.getElementById("profile-img");
-  
   photo.src="";
   form.style.display="none";
+  
   showsection(current_source);
 }
 function showsection(source)
