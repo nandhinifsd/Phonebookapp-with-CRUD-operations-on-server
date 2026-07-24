@@ -117,7 +117,7 @@ imageinput=document.getElementById("contactImage");
 photo=document.getElementById("profile-img")
 imageinput.addEventListener("change",function()
 { 
-       img="";
+      let img="";
         const file = this.files[0];
         if (!file) 
         {
@@ -126,7 +126,7 @@ imageinput.addEventListener("change",function()
           }
         const reader = new FileReader();
     reader.onload = function () {
-      let img = reader.result;
+      img = reader.result;
       photo.src=img;
       image_flag=true;
     };
