@@ -15,7 +15,7 @@ let current_source;
 let contacts=[];
 let newcontact=[];
 let img="";
-const url=`http://localhost:3000/contacts`;
+const url=`https://phonebookapp-api.onrender.com/contacts`;
  initialiseEvents();
 
 async function initialiseEvents()
@@ -258,7 +258,7 @@ checkbox.checked=false;
 async function delData(id)
 {
  const response=await fetch(url + "/" + id, {
-    method: "Delete"
+    method: "DELETE"
   
   });
    const result = await response.json();
