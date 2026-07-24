@@ -117,6 +117,7 @@ imageinput=document.getElementById("contactImage");
 photo=document.getElementById("profile-img")
 imageinput.addEventListener("change",function()
 { 
+       img="";
         const file = this.files[0];
         if (!file) 
         {
@@ -131,7 +132,7 @@ imageinput.addEventListener("change",function()
     };
 
     reader.readAsDataURL(file);
-    img="";
+   
   
 });
 //event listener for close button in contact form
