@@ -518,3 +518,4 @@ function addcontact(source)
   
  photo=document.getElementById("profile-img")
  photo.src="";
+}
