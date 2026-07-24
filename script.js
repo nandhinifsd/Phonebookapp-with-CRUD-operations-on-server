@@ -111,7 +111,7 @@ if (current_source=="card")
 
 //
 
-//event listener for uploading img into webpage and display it in preview and save it in db
+//event listener for uploading img into webpage and display it in preview
 
 imageinput=document.getElementById("contactImage");
 photo=document.getElementById("profile-img")
@@ -131,6 +131,7 @@ imageinput.addEventListener("change",function()
     };
 
     reader.readAsDataURL(file);
+    img="";
   
 });
 //event listener for close button in contact form
