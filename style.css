@@ -1,3 +1,4 @@
+
 *{
     margin:0;
     padding:0;
@@ -140,7 +141,7 @@ body{
     font-size: xx-large;
     padding:3% 5%;
     margin:1%;
-    width:40%;
+    width:70%;
     background-color: transparent;
 }
 .keypad-suggestions
