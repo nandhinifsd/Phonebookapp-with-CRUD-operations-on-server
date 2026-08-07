@@ -16,7 +16,7 @@ let contacts=[];
 let newcontact=[];
 //let img="";
 let image_flag=false;
-const url=`https://phonebookapp-api.onrender.com/contacts`;
+const url=`https://phonebookapp-with-crud-operations-on.onrender.com/contacts`;
  initialiseEvents();
 
 async function initialiseEvents()
